@@ -12,6 +12,8 @@ public class Car {
 		Wheel.spin();
 		Wheel.spin(1);
 		Wheel.spin("a");
+		Wheel.spin(1,"Adrian");
+		Wheel.spin(1,"A" , "B" , "C", "D");
 		
 		
 	}

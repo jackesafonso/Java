@@ -3,6 +3,8 @@ package com.fdmgroup.postmockito;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import static org.mockito.Mockito.*; //static was used because I am using (verify, eq and Mockito matches)
+
 
 public class CarTest {
 
@@ -17,11 +19,19 @@ public class CarTest {
 		car.setWheel(wheel);
 		// Wheel wheel = new Wheel(); //can not be used on mockito because we
 		// need a mock
+		
+		
 		car.drive();
+		
 		// verify is a static method in mockito class
 		Mockito.verify(wheel).spin();
-		Mockito.verify(wheel).spin(Mockito.anyInt());
-		Mockito.verify(wheel).spin(Mockito.anyString());
+		Mockito.verify(wheel).spin(Mockito.anyInt()); // passing integer
+		Mockito.verify(wheel).spin(Mockito.anyString()); // passing String
+		//use eq if i am specific on certain value (FOR PHISICAL VALUE)
+		Mockito.verify(wheel).spin(eq(1),Mockito.anyString()); // passing integer and string
+		Mockito.verify(wheel).spin(eq(1),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),eq("D"));
+		
+		
 
 	}
 
