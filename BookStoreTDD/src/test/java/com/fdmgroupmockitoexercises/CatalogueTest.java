@@ -11,6 +11,8 @@ import org.mockito.Mockito;
 
 public class CatalogueTest {
 	
+	
+	
 	@Mock
 	private ArrayList<Book> arrayOfBooks;
 	@Mock
@@ -49,9 +51,12 @@ public class CatalogueTest {
 		Mockito.verify(readItemCommandObject).readAll();
 		
 	}
-
-
 	
+	@Test
+	public void test_GetAllBooks_ReturnsListOfBooksItReceivesFromReadAllMethodOfReadItemCommand_WhenCalled(){
+		
+	}
+
 
 
 }

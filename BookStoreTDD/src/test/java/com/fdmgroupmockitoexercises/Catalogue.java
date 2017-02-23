@@ -4,9 +4,18 @@ import java.awt.print.Book;
 import java.util.ArrayList;
 
 public class Catalogue {
+	
+	
 
 	
 	private ReadItemCommandObject readItemCommandObject=new ReadItemCommandObject();
+	
+	
+	public void addBook(){
+		
+		
+		
+	}
 		
 	public ArrayList<Book> getAllBooks() {
 		ArrayList<Book> arrayOfBooks = readItemCommandObject.readAll();
@@ -17,5 +26,7 @@ public class Catalogue {
 		this.readItemCommandObject = readItemCommandObject;
 		
 	}
+
+	
 
 }
