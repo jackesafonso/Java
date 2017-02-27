@@ -3,31 +3,50 @@ package com.fdmgroup.javaWeek1Assessment;
 import java.util.Map;
 
 public class GroupController {
-
 	
-	private DatabaseReader mockReader;
-	private int String;
-	private java.util.Map<java.lang.String, Trainee> Map;
+	private DatabaseWriter databaseWriter;
+	private DatabaseReader databaseReader;
 
 	public GroupController(DatabaseWriter mockWriter, DatabaseReader mockReader) {
-		this.mockReader = mockReader;
+
+		databaseWriter = mockWriter;
+		databaseReader = mockReader;
+
+		
+	}
+
+	public DatabaseWriter getDatabaseWriter() {
+		return databaseWriter;
+	}
+
+	public void setDatabaseWriter(DatabaseWriter databaseWriter) {
+		this.databaseWriter = databaseWriter;
+	}
+
+	public DatabaseReader getDatabaseReader() {
+		return databaseReader;
+	}
+
+	public void setDatabaseReader(DatabaseReader databaseReader) {
+		this.databaseReader = databaseReader;
 	}
 
 	public Map<String, Trainee> getAllTrainees() {
-	 
-		mockReader.readGroup();
+		Map<String, Trainee> map;
+		map = databaseReader.readGroup();
+		return map;
+		// TODO Auto-generated method stub
 		
-		
-		return null;
 	}
 
 	public void addTrainee(Trainee mockTrainee) {
-		// TODO Auto-generated method stub
+		
+		databaseWriter.addTrainee(mockTrainee);
 		
 	}
 
-	public void removeTraineeByUsername(String string2) {
-		// TODO Auto-generated method stub
+	public void removeTraineeByUsername(String string) {
+		databaseWriter.deleteTraineeByUsername(string);
 		
 	}
 
