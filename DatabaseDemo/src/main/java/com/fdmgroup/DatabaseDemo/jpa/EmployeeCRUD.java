@@ -12,20 +12,27 @@ public class EmployeeCRUD {
 
 	public EmployeeCRUD(EntityManagerFactory factory) {
 		this.factory = factory;
-		factory = Persistence.createEntityManagerFactory("EmployeePersistence");
+//		factory = Persistence.createEntityManagerFactory("EmployeePersistence");
 
 	}
 
-	public void createEmployee(Employee emp) {
+	public void createEmployee(Employee emp) throws EmployeeAlreadyExistsException{
 
 		// "EmployeePersistence" has to be the same on
 		// main/resource/META-INF/Persistence
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("EmployeePersistence");
+//		EntityManagerFactory factory = Persistence.createEntityManagerFactory("EmployeePersistence");
+		
+		Employee retrievedEmp = retrieveEmployee(emp.getId());
+		if(retrievedEmp == null){
 		EntityManager manager = factory.createEntityManager();
 		manager.getTransaction().begin();
 		manager.persist(emp);
 		manager.getTransaction().commit();
 		manager.close();
+		}
+		else{
+			throw new EmployeeAlreadyExistsException();
+		}
 
 	}
 
@@ -38,10 +45,13 @@ public class EmployeeCRUD {
 
 	public void updateEmployee(Employee emp) {
 		EntityManager manager = factory.createEntityManager();
+		
 		manager.getTransaction().begin();
 		manager.merge(emp);
 		manager.getTransaction().commit();
 		manager.close();
+		
+		
 	}
 
 	public void deleteEmployee(int empId) {
